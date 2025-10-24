@@ -1,0 +1,7 @@
+
+State Machine - |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|current_state
+Name current_state.EXECUTE current_state.MEM_ACCESS current_state.FETCH_OPERAND current_state.FETCH_OPCODE 
+current_state.FETCH_OPCODE 0 0 0 0 
+current_state.FETCH_OPERAND 0 0 1 1 
+current_state.MEM_ACCESS 0 1 0 1 
+current_state.EXECUTE 1 0 0 1 

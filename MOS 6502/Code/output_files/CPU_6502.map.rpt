@@ -1,0 +1,812 @@
+Analysis & Synthesis report for CPU_6502
+Sun Sep 28 22:34:02 2025
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|current_state
+  9. User-Specified and Inferred Latches
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i
+ 16. Port Connectivity Checks: "OUTPUT:OUTPUT_i"
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Sep 28 22:34:02 2025           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; CPU_6502                                        ;
+; Top-level Entity Name              ; CPU_6502                                        ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 378                                             ;
+;     Total combinational functions  ; 354                                             ;
+;     Dedicated logic registers      ; 88                                              ;
+; Total registers                    ; 88                                              ;
+; Total pins                         ; 30                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; CPU_6502           ; CPU_6502           ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                          ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                            ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+---------+
+; SRC/CALCUL_ADRESS.v              ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/CALCUL_ADRESS.v          ;         ;
+; SRC/REGISTER_Y.v                 ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/REGISTER_Y.v             ;         ;
+; SRC/REGISTER_X.v                 ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/REGISTER_X.v             ;         ;
+; SRC/REGISTER_IMM.v               ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/REGISTER_IMM.v           ;         ;
+; SRC/REGISTER_FLAG.v              ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/REGISTER_FLAG.v          ;         ;
+; SRC/REGISTER_A.v                 ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/REGISTER_A.v             ;         ;
+; SRC/PROGRAMM_COUNTER.v           ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/PROGRAMM_COUNTER.v       ;         ;
+; SRC/OUTPUT.v                     ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/OUTPUT.v                 ;         ;
+; SRC/NEW_FSM.v                    ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/NEW_FSM.v                ;         ;
+; SRC/MUX_OUT.v                    ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/MUX_OUT.v                ;         ;
+; SRC/MUX_DATA.v                   ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/MUX_DATA.v               ;         ;
+; SRC/MUX_ADRESS.v                 ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/MUX_ADRESS.v             ;         ;
+; SRC/MEMORY_DATA_REGISTER.v       ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/MEMORY_DATA_REGISTER.v   ;         ;
+; SRC/MEMORY_ADRESS_REGISTER.v     ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/MEMORY_ADRESS_REGISTER.v ;         ;
+; SRC/MEMOIRE.v                    ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/MEMOIRE.v                ;         ;
+; SRC/INSTRUCTION_REGISTER.v       ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/INSTRUCTION_REGISTER.v   ;         ;
+; SRC/DECO_BCD.v                   ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/DECO_BCD.v               ;         ;
+; SRC/DATAPATH.v                   ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/DATAPATH.v               ;         ;
+; SRC/CPU_6502.v                   ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/CPU_6502.v               ;         ;
+; SRC/COMMANDE.v                   ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/COMMANDE.v               ;         ;
+; SRC/ALU.v                        ; yes             ; User Verilog HDL File  ; C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/SRC/ALU.v                    ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 378   ;
+;                                             ;       ;
+; Total combinational functions               ; 354   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 189   ;
+;     -- 3 input functions                    ; 78    ;
+;     -- <=2 input functions                  ; 87    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 307   ;
+;     -- arithmetic mode                      ; 47    ;
+;                                             ;       ;
+; Total registers                             ; 88    ;
+;     -- Dedicated logic registers            ; 88    ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 30    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out node                        ; CLK   ;
+; Maximum fan-out                             ; 88    ;
+; Total fan-out                               ; 1447  ;
+; Average fan-out                             ; 3.07  ;
++---------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                ;
++---------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                              ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                           ; Library Name ;
++---------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------+
+; |CPU_6502                                               ; 354 (0)           ; 88 (0)       ; 0           ; 0            ; 0       ; 0         ; 30   ; 0            ; |CPU_6502                                                                     ; work         ;
+;    |COMMANDE:COMMANDE_i|                                ; 80 (0)            ; 13 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|COMMANDE:COMMANDE_i                                                 ; work         ;
+;       |INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i|     ; 1 (1)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|COMMANDE:COMMANDE_i|INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i     ; work         ;
+;       |NEW_FSM:NEW_FSM_i|                               ; 79 (79)           ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i                               ; work         ;
+;    |DATAPATH:DATAPATH_i|                                ; 239 (0)           ; 50 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i                                                 ; work         ;
+;       |ALU:ALU_i|                                       ; 81 (81)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|ALU:ALU_i                                       ; work         ;
+;       |CALCUL_ADRESS:CALCUL_ADRESS_i|                   ; 17 (17)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i                   ; work         ;
+;       |MEMORY_ADRESS_REGISTER:MEMORY_ADRESS_REGISTER_i| ; 2 (2)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|MEMORY_ADRESS_REGISTER:MEMORY_ADRESS_REGISTER_i ; work         ;
+;       |MUX_ADRESS:MUX_ADRESS_i|                         ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|MUX_ADRESS:MUX_ADRESS_i                         ; work         ;
+;       |MUX_DATA:MUX_DATA_i|                             ; 28 (28)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|MUX_DATA:MUX_DATA_i                             ; work         ;
+;       |MUX_OUT:MUX_OUT_i|                               ; 9 (9)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|MUX_OUT:MUX_OUT_i                               ; work         ;
+;       |PROGRAMM_COUNTER:PROGRAMM_COUNTER_i|             ; 35 (35)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|PROGRAMM_COUNTER:PROGRAMM_COUNTER_i             ; work         ;
+;       |REGISTER_A:REGISTER_A_i|                         ; 30 (30)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|REGISTER_A:REGISTER_A_i                         ; work         ;
+;       |REGISTER_FLAG:REGISTER_FLAG_i|                   ; 8 (8)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|REGISTER_FLAG:REGISTER_FLAG_i                   ; work         ;
+;       |REGISTER_IMM:REGISTER_IMM_i|                     ; 13 (13)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|DATAPATH:DATAPATH_i|REGISTER_IMM:REGISTER_IMM_i                     ; work         ;
+;    |MEMOIRE:MEMOIRE_i|                                  ; 21 (21)           ; 25 (25)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|MEMOIRE:MEMOIRE_i                                                   ; work         ;
+;    |OUTPUT:OUTPUT_i|                                    ; 14 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|OUTPUT:OUTPUT_i                                                     ; work         ;
+;       |DECO_BCD:DECO_BCD_1|                             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|OUTPUT:OUTPUT_i|DECO_BCD:DECO_BCD_1                                 ; work         ;
+;       |DECO_BCD:DECO_BCD_2|                             ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |CPU_6502|OUTPUT:OUTPUT_i|DECO_BCD:DECO_BCD_2                                 ; work         ;
++---------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|current_state                                                             ;
++-----------------------------+-----------------------+--------------------------+-----------------------------+----------------------------+
+; Name                        ; current_state.EXECUTE ; current_state.MEM_ACCESS ; current_state.FETCH_OPERAND ; current_state.FETCH_OPCODE ;
++-----------------------------+-----------------------+--------------------------+-----------------------------+----------------------------+
+; current_state.FETCH_OPCODE  ; 0                     ; 0                        ; 0                           ; 0                          ;
+; current_state.FETCH_OPERAND ; 0                     ; 0                        ; 1                           ; 1                          ;
+; current_state.MEM_ACCESS    ; 0                     ; 1                        ; 0                           ; 1                          ;
+; current_state.EXECUTE       ; 1                     ; 0                        ; 0                           ; 1                          ;
++-----------------------------+-----------------------+--------------------------+-----------------------------+----------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                                             ;
++--------------------------------------------------------------+---------------------------------------------------------+------------------------+
+; Latch Name                                                   ; Latch Enable Signal                                     ; Free of Timing Hazards ;
++--------------------------------------------------------------+---------------------------------------------------------+------------------------+
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[0]          ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[3]     ; yes                    ;
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[2]          ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[3]     ; yes                    ;
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[1]          ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[3]     ; yes                    ;
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[3]          ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[3]     ; yes                    ;
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|SELECT_ADDRESS[0]      ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|SELECT_ADDRESS[1] ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[4] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[6] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[7] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[5] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[2] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[3] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[0] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|ADR_tmp[1] ; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|calcul_enable     ; yes                    ;
+; Number of user-specified and inferred latches = 13           ;                                                         ;                        ;
++--------------------------------------------------------------+---------------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++----------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                               ;
++------------------------------------------------------------------------------------+---------------------------------------------+
+; Register name                                                                      ; Reason for Removal                          ;
++------------------------------------------------------------------------------------+---------------------------------------------+
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[0..7]                            ; Stuck at GND due to stuck port data_in      ;
+; DATAPATH:DATAPATH_i|REGISTER_Y:REGISTER_Y_i|OUT_Y[0..7]                            ; Stuck at GND due to stuck port data_in      ;
+; DATAPATH:DATAPATH_i|MEMORY_ADRESS_REGISTER:MEMORY_ADRESS_REGISTER_i|OUT_MAR[8..15] ; Stuck at GND due to stuck port data_in      ;
+; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[0..7]      ; Stuck at GND due to stuck port data_in      ;
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|current_state~8                              ; Lost fanout                                 ;
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|current_state~9                              ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~40                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~24                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~56                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~8                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~80                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~96                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~112                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~64                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~88                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~104                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~120                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~72                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~32                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~16                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~48                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~0                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~97                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~49                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~113                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~33                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~73                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~25                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~89                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~9                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~105                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~57                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~121                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~41                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~17                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~65                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~81                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~1                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~50                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~82                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~114                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~18                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~58                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~90                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~122                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~26                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~42                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~74                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~106                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~10                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~66                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~34                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~98                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~2                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~83                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~99                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~115                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~67                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~27                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~43                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~59                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~11                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~91                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~107                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~123                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~75                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~35                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~19                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~51                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~3                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~100                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~84                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~116                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~68                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~28                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~44                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~60                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~12                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~92                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~108                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~124                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~76                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~20                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~36                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~52                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~4                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~85                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~101                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~117                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~69                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~45                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~29                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~61                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~13                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~93                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~109                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~125                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~77                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~37                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~21                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~53                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~5                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~30                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~46                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~62                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~14                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~102                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~86                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~118                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~70                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~94                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~110                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~126                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~78                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~22                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~38                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~54                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~6                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~87                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~103                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~119                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~71                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~47                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~31                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~63                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~15                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~95                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~111                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~127                                                          ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~79                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~39                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~23                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~55                                                           ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~7                                                            ; Stuck at GND due to stuck port clock_enable ;
+; MEMOIRE:MEMOIRE_i|RAM~176                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~208                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~240                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~144                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~184                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~216                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~248                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~152                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~168                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~200                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~232                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~136                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~160                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~192                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~224                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~128                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~209                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~225                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~241                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~193                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~153                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~169                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~185                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~137                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~217                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~233                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~249                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~201                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~145                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~161                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~177                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~129                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~226                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~178                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~242                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~162                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~202                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~154                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~218                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~138                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~234                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~186                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~250                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~170                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~194                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~146                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~210                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~130                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~227                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~171                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~235                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~163                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~211                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~155                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~219                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~147                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~243                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~187                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~251                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~179                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~195                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~139                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~203                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~131                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~228                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~172                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~236                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~164                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~212                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~156                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~220                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~148                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~244                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~188                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~252                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~180                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~196                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~140                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~204                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~132                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~229                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~173                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~237                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~165                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~213                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~157                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~221                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~149                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~245                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~189                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~253                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~181                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~197                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~141                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~205                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~133                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~230                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~174                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~238                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~166                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~158                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~214                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~222                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~150                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~246                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~190                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~254                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~182                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~142                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~198                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~206                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~134                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~175                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~231                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~239                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~167                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~215                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~159                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~223                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~151                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~191                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~247                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~255                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~183                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~199                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~143                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~207                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|RAM~135                                                          ; Lost fanout                                 ;
+; MEMOIRE:MEMOIRE_i|in_write_latch                                                   ; Lost fanout                                 ;
+; Total Number of Removed Registers = 291                                            ;                                             ;
++------------------------------------------------------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                        ;
++------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------+
+; Register name                                        ; Reason for Removal             ; Registers Removed due to This Register                                     ;
++------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------+
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[1] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[1] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[0] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[0] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[2] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[2] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[3] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[3] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[4] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[4] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[5] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[5] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[6] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[6] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i|OUT_X[7] ; Stuck at GND                   ; DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i|OUT_MDR[7] ;
+;                                                      ; due to stuck port data_in      ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~40                             ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~176                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~97                             ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~209                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~50                             ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~226                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~83                             ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~227                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~100                            ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~228                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~85                             ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~229                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~30                             ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~230                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
+; MEMOIRE:MEMOIRE_i|RAM~87                             ; Stuck at GND                   ; MEMOIRE:MEMOIRE_i|RAM~175                                                  ;
+;                                                      ; due to stuck port clock_enable ;                                                                            ;
++------------------------------------------------------+--------------------------------+----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 88    ;
+; Number of registers using Synchronous Clear  ; 18    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 5     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 66    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------+
+; Inverted Register Statistics                          ;
++---------------------------------------------+---------+
+; Inverted Register                           ; Fan out ;
++---------------------------------------------+---------+
+; COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|phase ; 27      ;
+; Total number of inverted registers = 1      ;         ;
++---------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |CPU_6502|DATAPATH:DATAPATH_i|REGISTER_IMM:REGISTER_IMM_i|OUT_IMM[4]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU_6502|MEMOIRE:MEMOIRE_i|DATA_MICRO_OUT[0]                                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |CPU_6502|COMMANDE:COMMANDE_i|INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i|OUT_IR[1]      ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |CPU_6502|DATAPATH:DATAPATH_i|MEMORY_ADRESS_REGISTER:MEMORY_ADRESS_REGISTER_i|OUT_MAR[0] ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |CPU_6502|DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i|offset_reg[7]                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU_6502|DATAPATH:DATAPATH_i|REGISTER_A:REGISTER_A_i|OUT_A[2]                           ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |CPU_6502|DATAPATH:DATAPATH_i|PROGRAMM_COUNTER:PROGRAMM_COUNTER_i|PC[14]                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU_6502|DATAPATH:DATAPATH_i|PROGRAMM_COUNTER:PROGRAMM_COUNTER_i|PC[6]                  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|SYNC                                     ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |CPU_6502|DATAPATH:DATAPATH_i|MUX_OUT:MUX_OUT_i|Mux6                                     ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|load_MARL                                ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|enable_CARRY                             ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[1]                            ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CPU_6502|COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|current_state                            ;
+; 13:1               ; 6 bits    ; 48 LEs        ; 36 LEs               ; 12 LEs                 ; No         ; |CPU_6502|DATAPATH:DATAPATH_i|MUX_DATA:MUX_DATA_i|Mux6                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; FETCH_OPCODE   ; 00    ; Unsigned Binary                                           ;
+; FETCH_OPERAND  ; 01    ; Unsigned Binary                                           ;
+; MEM_ACCESS     ; 10    ; Unsigned Binary                                           ;
+; EXECUTE        ; 11    ; Unsigned Binary                                           ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "OUTPUT:OUTPUT_i"                                                                                         ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                  ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; HEX2 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX3 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX4 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX5 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX6 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; HEX7 ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sun Sep 28 22:33:58 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU_6502 -c CPU_6502
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Warning (12019): Can't analyze file -- file SRC/CLK_DIVIDER.v is missing
+Info (12021): Found 1 design units, including 1 entities, in source file src/calcul_adress.v
+    Info (12023): Found entity 1: CALCUL_ADRESS
+Info (12021): Found 1 design units, including 1 entities, in source file src/register_y.v
+    Info (12023): Found entity 1: REGISTER_Y
+Info (12021): Found 1 design units, including 1 entities, in source file src/register_x.v
+    Info (12023): Found entity 1: REGISTER_X
+Info (12021): Found 1 design units, including 1 entities, in source file src/register_imm.v
+    Info (12023): Found entity 1: REGISTER_IMM
+Info (12021): Found 1 design units, including 1 entities, in source file src/register_flag.v
+    Info (12023): Found entity 1: REGISTER_FLAG
+Info (12021): Found 1 design units, including 1 entities, in source file src/register_a.v
+    Info (12023): Found entity 1: REGISTER_A
+Info (12021): Found 1 design units, including 1 entities, in source file src/programm_counter.v
+    Info (12023): Found entity 1: PROGRAMM_COUNTER
+Info (12021): Found 1 design units, including 1 entities, in source file src/output.v
+    Info (12023): Found entity 1: OUTPUT
+Info (12021): Found 1 design units, including 1 entities, in source file src/new_fsm.v
+    Info (12023): Found entity 1: NEW_FSM
+Info (12021): Found 1 design units, including 1 entities, in source file src/mux_out.v
+    Info (12023): Found entity 1: MUX_OUT
+Info (12021): Found 1 design units, including 1 entities, in source file src/mux_data.v
+    Info (12023): Found entity 1: MUX_DATA
+Info (12021): Found 1 design units, including 1 entities, in source file src/mux_adress.v
+    Info (12023): Found entity 1: MUX_ADRESS
+Info (12021): Found 1 design units, including 1 entities, in source file src/memory_data_register.v
+    Info (12023): Found entity 1: MEMORY_DATA_REGISTER
+Info (12021): Found 1 design units, including 1 entities, in source file src/memory_adress_register.v
+    Info (12023): Found entity 1: MEMORY_ADRESS_REGISTER
+Info (12021): Found 1 design units, including 1 entities, in source file src/memoire.v
+    Info (12023): Found entity 1: MEMOIRE
+Info (12021): Found 1 design units, including 1 entities, in source file src/instruction_register.v
+    Info (12023): Found entity 1: INSTRUCTION_REGISTER
+Info (12021): Found 1 design units, including 1 entities, in source file src/deco_bcd.v
+    Info (12023): Found entity 1: DECO_BCD
+Info (12021): Found 1 design units, including 1 entities, in source file src/datapath.v
+    Info (12023): Found entity 1: DATAPATH
+Info (12021): Found 1 design units, including 1 entities, in source file src/cpu_6502.v
+    Info (12023): Found entity 1: CPU_6502
+Info (12021): Found 1 design units, including 1 entities, in source file src/commande.v
+    Info (12023): Found entity 1: COMMANDE
+Info (12021): Found 1 design units, including 1 entities, in source file src/alu.v
+    Info (12023): Found entity 1: ALU
+Info (12127): Elaborating entity "CPU_6502" for the top level hierarchy
+Info (12128): Elaborating entity "COMMANDE" for hierarchy "COMMANDE:COMMANDE_i"
+Info (12128): Elaborating entity "INSTRUCTION_REGISTER" for hierarchy "COMMANDE:COMMANDE_i|INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i"
+Info (12128): Elaborating entity "NEW_FSM" for hierarchy "COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i"
+Warning (10240): Verilog HDL Always Construct warning at NEW_FSM.v(192): inferring latch(es) for variable "SELECT_ADDRESS", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at NEW_FSM.v(192): inferring latch(es) for variable "alu_opcode", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "alu_opcode[0]" at NEW_FSM.v(219)
+Info (10041): Inferred latch for "alu_opcode[1]" at NEW_FSM.v(219)
+Info (10041): Inferred latch for "alu_opcode[2]" at NEW_FSM.v(219)
+Info (10041): Inferred latch for "alu_opcode[3]" at NEW_FSM.v(219)
+Info (10041): Inferred latch for "SELECT_ADDRESS[0]" at NEW_FSM.v(219)
+Info (10041): Inferred latch for "SELECT_ADDRESS[1]" at NEW_FSM.v(219)
+Info (12128): Elaborating entity "DATAPATH" for hierarchy "DATAPATH:DATAPATH_i"
+Info (12128): Elaborating entity "MUX_DATA" for hierarchy "DATAPATH:DATAPATH_i|MUX_DATA:MUX_DATA_i"
+Info (12128): Elaborating entity "MEMORY_DATA_REGISTER" for hierarchy "DATAPATH:DATAPATH_i|MEMORY_DATA_REGISTER:MEMORY_DATA_REGISTER_i"
+Info (12128): Elaborating entity "REGISTER_Y" for hierarchy "DATAPATH:DATAPATH_i|REGISTER_Y:REGISTER_Y_i"
+Info (12128): Elaborating entity "REGISTER_X" for hierarchy "DATAPATH:DATAPATH_i|REGISTER_X:REGISTER_X_i"
+Info (12128): Elaborating entity "REGISTER_A" for hierarchy "DATAPATH:DATAPATH_i|REGISTER_A:REGISTER_A_i"
+Info (12128): Elaborating entity "REGISTER_IMM" for hierarchy "DATAPATH:DATAPATH_i|REGISTER_IMM:REGISTER_IMM_i"
+Info (12128): Elaborating entity "ALU" for hierarchy "DATAPATH:DATAPATH_i|ALU:ALU_i"
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(21): inferring latch(es) for variable "Flag_Overflow", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(21): inferring latch(es) for variable "old_carry", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(21): inferring latch(es) for variable "temp_result", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "Flag_Overflow" at ALU.v(104)
+Info (12128): Elaborating entity "REGISTER_FLAG" for hierarchy "DATAPATH:DATAPATH_i|REGISTER_FLAG:REGISTER_FLAG_i"
+Info (12128): Elaborating entity "MUX_ADRESS" for hierarchy "DATAPATH:DATAPATH_i|MUX_ADRESS:MUX_ADRESS_i"
+Info (12128): Elaborating entity "MEMORY_ADRESS_REGISTER" for hierarchy "DATAPATH:DATAPATH_i|MEMORY_ADRESS_REGISTER:MEMORY_ADRESS_REGISTER_i"
+Info (12128): Elaborating entity "PROGRAMM_COUNTER" for hierarchy "DATAPATH:DATAPATH_i|PROGRAMM_COUNTER:PROGRAMM_COUNTER_i"
+Info (12128): Elaborating entity "CALCUL_ADRESS" for hierarchy "DATAPATH:DATAPATH_i|CALCUL_ADRESS:CALCUL_ADRESS_i"
+Warning (10240): Verilog HDL Always Construct warning at CALCUL_ADRESS.v(31): inferring latch(es) for variable "ADR_tmp", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "ADR_tmp[0]" at CALCUL_ADRESS.v(31)
+Info (10041): Inferred latch for "ADR_tmp[1]" at CALCUL_ADRESS.v(31)
+Info (10041): Inferred latch for "ADR_tmp[2]" at CALCUL_ADRESS.v(31)
+Info (10041): Inferred latch for "ADR_tmp[3]" at CALCUL_ADRESS.v(31)
+Info (10041): Inferred latch for "ADR_tmp[4]" at CALCUL_ADRESS.v(31)
+Info (10041): Inferred latch for "ADR_tmp[5]" at CALCUL_ADRESS.v(31)
+Info (10041): Inferred latch for "ADR_tmp[6]" at CALCUL_ADRESS.v(31)
+Info (10041): Inferred latch for "ADR_tmp[7]" at CALCUL_ADRESS.v(31)
+Info (12128): Elaborating entity "MUX_OUT" for hierarchy "DATAPATH:DATAPATH_i|MUX_OUT:MUX_OUT_i"
+Info (12128): Elaborating entity "MEMOIRE" for hierarchy "MEMOIRE:MEMOIRE_i"
+Warning (10030): Net "ROM.data_a" at MEMOIRE.v(11) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "ROM.waddr_a" at MEMOIRE.v(11) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "ROM.we_a" at MEMOIRE.v(11) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "OUTPUT" for hierarchy "OUTPUT:OUTPUT_i"
+Info (12128): Elaborating entity "DECO_BCD" for hierarchy "OUTPUT:OUTPUT_i|DECO_BCD:DECO_BCD_1"
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276007): RAM logic "MEMOIRE:MEMOIRE_i|RAM" is uninferred due to asynchronous read logic
+    Info (276004): RAM logic "MEMOIRE:MEMOIRE_i|ROM" is uninferred due to inappropriate RAM size
+Critical Warning (127005): Memory depth (32) in the design file differs from memory depth (21) in the Memory Initialization File "C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/db/CPU_6502.ram0_MEMOIRE_8dcb22d9.hdl.mif" -- setting initial value for remaining addresses to 0
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/Users/AINA KEVIN/Desktop/CPU 6502/NEWBa/db/CPU_6502.ram0_MEMOIRE_8dcb22d9.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13012): Latch COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal COMMANDE:COMMANDE_i|INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i|OUT_IR[1]
+Warning (13012): Latch COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal COMMANDE:COMMANDE_i|INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i|OUT_IR[1]
+Warning (13012): Latch COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal COMMANDE:COMMANDE_i|INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i|OUT_IR[1]
+Warning (13012): Latch COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|alu_opcode[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal COMMANDE:COMMANDE_i|INSTRUCTION_REGISTER:INSTRUCTION_REGISTER_i|OUT_IR[1]
+Warning (13012): Latch COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|SELECT_ADDRESS[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal COMMANDE:COMMANDE_i|NEW_FSM:NEW_FSM_i|current_state.MEM_ACCESS
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (17049): 131 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 416 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 25 output pins
+    Info (21061): Implemented 386 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 24 warnings
+    Info: Peak virtual memory: 4604 megabytes
+    Info: Processing ended: Sun Sep 28 22:34:02 2025
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:02
+
+

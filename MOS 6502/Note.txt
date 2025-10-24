@@ -1,0 +1,14 @@
+This project is my final bachelor’s thesis (Licence).
+It consists of creating a custom microprocessor inspired by the 6502, the famous processor used by Steve Jobs in early Apple computers.
+
+The repository contains two main folders:
+
+Code/ — includes two subfolders:
+
+sim/ → contains the simulation testbench (requires Bash, Git, and VS Code). A Makefile is provided to automate the simulation and compilation tasks.
+
+src/ → contains the Verilog source code, which has already been compiled.
+
+Doc/ — includes documentation explaining the datapath, control unit, and the top-level architecture of the microprocessor.
+
+This project demonstrates my skills in digital design, computer architecture, and hardware description languages (HDL).

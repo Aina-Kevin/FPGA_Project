@@ -1,0 +1,46 @@
+# ERROR: No extended dataflow license exists
+# vsim -L work CPU_6502_tb 
+# Start time: 21:20:27 on Sep 29,2025
+# Loading work.CPU_6502_tb
+# Loading work.CPU_6502
+# Loading work.COMMANDE
+# Loading work.INSTRUCTION_REGISTER
+# Loading work.NEW_FSM
+# Loading work.DATAPATH
+# Loading work.MUX_DATA
+# Loading work.MEMORY_DATA_REGISTER
+# Loading work.REGISTER_Y
+# Loading work.REGISTER_X
+# Loading work.REGISTER_A
+# Loading work.REGISTER_IMM
+# Loading work.ALU
+# Loading work.REGISTER_FLAG
+# Loading work.MUX_ADRESS
+# Loading work.MEMORY_ADRESS_REGISTER
+# Loading work.PROGRAMM_COUNTER
+# Loading work.CALCUL_ADRESS
+# Loading work.MUX_OUT
+# Loading work.MEMOIRE
+# Loading work.OUTPUT
+# Loading work.DECO_BCD
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'OUTPUT_i'.  Expected 9, found 3.
+#    Time: 0 ps  Iteration: 0  Instance: /CPU_6502_tb/uut/OUTPUT_i File: ../SRC/CPU_6502.v Line: 160
+# ** Warning: (vsim-3722) ../SRC/CPU_6502.v(160): [TFMPC] - Missing connection for port 'HEX2'.
+# ** Warning: (vsim-3722) ../SRC/CPU_6502.v(160): [TFMPC] - Missing connection for port 'HEX3'.
+# ** Warning: (vsim-3722) ../SRC/CPU_6502.v(160): [TFMPC] - Missing connection for port 'HEX4'.
+# ** Warning: (vsim-3722) ../SRC/CPU_6502.v(160): [TFMPC] - Missing connection for port 'HEX5'.
+# ** Warning: (vsim-3722) ../SRC/CPU_6502.v(160): [TFMPC] - Missing connection for port 'HEX6'.
+# ** Warning: (vsim-3722) ../SRC/CPU_6502.v(160): [TFMPC] - Missing connection for port 'HEX7'.
+add wave *
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: AINA KEVIN  Hostname: DESKTOP-G6HCOOR  ProcessID: 19028
+#           Attempting to use alternate WLF file "./wlftxetykw".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftxetykw
+run -all
+# ** Note: $finish    : CPU_6502_tb.v(38)
+#    Time: 5030 ps  Iteration: 0  Instance: /CPU_6502_tb
+# 1
+# Break in Module CPU_6502_tb at CPU_6502_tb.v line 38
+# End time: 22:25:45 on Sep 29,2025, Elapsed time: 1:05:18
+# Errors: 0, Warnings: 9
